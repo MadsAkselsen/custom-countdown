@@ -50,10 +50,28 @@ function updateCountdown(e) {
   e.preventDefault();
   countdownTitle = e.srcElement[0].value;
   countdownDate = e.srcElement[1].value;
-  // Get number version of current date, updateDOM
-  countdownValue = new Date(countdownDate).getTime(); // time between countdownDate and 1970 in miliseconds
-  updateDOM();
+  // check for valid date
+  if (countdownDate === '') {
+    alert('Please select a date for the countdown');
+  } else {
+    // Get number version of current date, updateDOM
+    countdownValue = new Date(countdownDate).getTime(); // time between countdownDate and 1970 in miliseconds
+    updateDOM();
+  }
+}
+
+// reset all values
+function reset() {
+  // hide countdowns, show input
+  countdownEL.hidden = true;
+  inputContainer.hidden = false;
+  // stop the countdown
+  clearInterval(countdownActive);
+  // reset values
+  countdownTitle = '';
+  countdownDate = '';
 }
 
 // Event listeners
 countdownForm.addEventListener('submit', updateCountdown);
+countdownBtn.addEventListener('click', reset);
