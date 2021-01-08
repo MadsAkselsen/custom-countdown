@@ -13,7 +13,7 @@ const newCountdownBtn = document.getElementById('newCountdown-button');
 
 let countdownTitle = '';
 let countdownDate = '';
-let countdownValue = Date;
+let countdownValue;
 let countdownActive;
 let savedCountdown;
 
